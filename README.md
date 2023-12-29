@@ -152,17 +152,21 @@ plt.title('Heatmap of Correlation Matrix')
 
 # Menampilkan plot
 plt.show()
-![Uploading image.png…]()
-
 ```
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/aa213b35-d1d0-4136-a071-e58d2ca84908)
+
 ``` bash
 sns.barplot(x='Alcohol', y='Magnesium', data=df)
 plt.show()
 ```
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/51bf2ced-cf89-42b4-a662-4f4e7e1fda00)
+
 ``` bash
 sns.jointplot(x='Alcohol', y='Magnesium', data=df, kind='scatter')
 plt.show()
 ```
+sns.jointplot(x='Alcohol', y='Magnesium', data=df, kind='scatter')
+plt.show()
 ``` bash
 sns.set(style="whitegrid")
 
@@ -185,6 +189,8 @@ sns.despine(right=True, top=True)
 # Menampilkan plot
 plt.show()
 ```
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/b36e30f2-d5c1-45d3-a12c-9320dc55270a)
+
 ``` bash
 sns.set(style="whitegrid")
 
@@ -206,6 +212,8 @@ sns.despine(right=True, top=True)
 # Menampilkan plot
 plt.show()
 ```
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/dfa7f9ce-8283-4c48-bc97-218828980b9f)
+
 ## Prepocessing
 ``` bash
 clusters = []
