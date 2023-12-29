@@ -1,4 +1,4 @@
-# Laporan Proyek Machine Learning
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/f72fc3b0-e276-4887-a126-298afdb733ba)# Laporan Proyek Machine Learning
 
 ### Nama : Aulia Marshanda
 ### Nim : 211351034
@@ -152,6 +152,8 @@ plt.title('Heatmap of Correlation Matrix')
 
 # Menampilkan plot
 plt.show()
+![Uploading image.png…]()
+
 ```
 ``` bash
 sns.barplot(x='Alcohol', y='Magnesium', data=df)
