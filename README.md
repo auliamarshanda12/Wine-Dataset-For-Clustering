@@ -1,4 +1,4 @@
-![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/f72fc3b0-e276-4887-a126-298afdb733ba)# Laporan Proyek Machine Learning
+# Laporan Proyek Machine Learning
 
 ### Nama : Aulia Marshanda
 ### Nim : 211351034
