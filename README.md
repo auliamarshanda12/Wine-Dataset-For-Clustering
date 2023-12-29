@@ -165,8 +165,8 @@ plt.show()
 sns.jointplot(x='Alcohol', y='Magnesium', data=df, kind='scatter')
 plt.show()
 ```
-sns.jointplot(x='Alcohol', y='Magnesium', data=df, kind='scatter')
-plt.show()
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/3d6be9a0-bb99-4672-8215-6e749a99debc)
+
 ``` bash
 sns.set(style="whitegrid")
 
