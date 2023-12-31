@@ -74,7 +74,6 @@ Untuk data collection ini, saya mendapatkan dataset yang nantinya digunakan dari
 Untuk bagian ini, kita akan menggunakan teknik EDA.
 Pertama kita mengimport semua library yang dibutuhkan,
 
-## Import Library
 ``` bash
 import pandas as pd
 import numpy as np
@@ -83,46 +82,39 @@ import seaborn as sns
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score, silhouette_samples
 ```
-
-## Data Discovery
+Kita menggunakan google collab untuk mengerjakannya maka kita masukkan import files
+``` bash
+from google.colab import files
+```
+Lalu kita masukkan file upload untuk mengupload token kaggle agar bisa mendownload dataset dari kaggle melalui google collab
+``` bash
+file.upload()
+```
+Setelah mengupload filenya, maka akan lanjut dengan membuat sebuah folder untuk menyimpan file kaggle.json yang sudah diupload tadi
+``` bash
+!mkdir -p ~/.kaggle
+!cp kaggle.json ~/.kaggle/
+!chmod 600 ~/.kaggle/kaggle.json
+!ls ~/.kaggle
+```
+Selanjutnya kita download datasetnya 
+``` bash
+!kaggle datasets download -d harrywang/wine-dataset-for-clustering --force
+```
+lalu kita exstract file yang telah kita download tadi
+``` bash
+!unzip wine-dataset-for-clustering
+```
+Selanjutnya memasukkan file csv 
 ``` bash
 df = pd.read_csv('wine-clustering.csv')
 df1 = pd.read_csv('wine-clustering.csv')
 ```
-- Lalu tipe data dari masing-masing kolom, kita bisa menggunakan properti info,
+Lalu untuk mengetahui tipe data dari masing-masing kolom, kita bisa menggunakan properti info,
 ``` bash
 df.info()
 ```
-- Selanjutnya kita akan mengonversi data dari float ke integer
-``` bash
-df.fillna(0, inplace=True)
-
-cols_to_convert = [
-    "Alcohol", "Malic_Acid", "Ash", "Ash_Alcanity",
-    "Magnesium", "Total_Phenols", "Flavanoids",
-    "Nonflavanoid_Phenols", "Proanthocyanins",
-    "Color_Intensity", "Hue", "OD280",
-    "Proline"
-]
-
-df[cols_to_convert] = df[cols_to_convert].astype(int)
-```
-- selanjutnya kita menghapus kolom dari dataframe
-``` bash
-X = df.drop(['OD280'], axis=1)
-```
-- Menyimpan dataframe kedalam csv
-``` bash
-df.to_csv('wine-clustering.csv', index=False)
-```
-- Selanjutnya kita mencetak atau menampilkan nilai dari variabel X
-``` bash
-print(X)
-```
-``` bash
-X.head()
-```
-## EDA
+Langsung saja kita masukkan EDA (Minimal 5)
 ``` bash
 data = {
     'Alcohol': [14.23, 13.2, 13.16, 14.37, 13.24, 14.2, 14.39, 14.06, 14.83, 13.86],
@@ -153,19 +145,19 @@ plt.title('Heatmap of Correlation Matrix')
 # Menampilkan plot
 plt.show()
 ```
-![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/aa213b35-d1d0-4136-a071-e58d2ca84908)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/017c8cc3-bfba-4f54-aa2c-ec2f7db25666)
 
 ``` bash
 sns.barplot(x='Alcohol', y='Magnesium', data=df)
 plt.show()
 ```
-![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/51bf2ced-cf89-42b4-a662-4f4e7e1fda00)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/30248448-0533-4d48-9487-ce428028eee2)
 
 ``` bash
 sns.jointplot(x='Alcohol', y='Magnesium', data=df, kind='scatter')
 plt.show()
 ```
-![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/3d6be9a0-bb99-4672-8215-6e749a99debc)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/25ff3c6c-ea7e-4b70-848a-3d8e77a86973)
 
 ``` bash
 sns.set(style="whitegrid")
@@ -267,10 +259,10 @@ Model cluster dalam konteks algoritma K-Means adalah representasi hasil dari pro
 X1 = df1
 
 # Mengisi nilai yang hilang dengan 0
-# X.fillna(0, inplace=True)
+X.fillna(0, inplace=True)
 
 # Menghilangkan kolom 'Color_Intensity' sebelum melakukan clustering
-# X_clustering = X.drop('Alcohol', axis=1)
+X_clustering = X.drop('Alcohol', axis=1)
 
 # Menentukan jumlah kluster
 n_clust = 5
@@ -286,44 +278,6 @@ print(X1)
 ```
 ``` bash
 X1.head()
-```
-``` bash
-# data = {
-     'Alcohol': [14.23, 13.20, 13.16, 14.37, 13.24],
-     'Malic_Acid': [1.71, 1.78, 2.36, 1.95, 2.59],
-     'Ash': [2.43, 2.14, 2.67, 2.50, 2.87],
-     'Ash_Alcanity': [15.6, 11.2, 18.6, 16.8, 21.0],
-     'Magnesium': [127, 100, 101, 113, 118],
-     'Total_Phenols': [2.80, 2.65, 2.80, 3.85, 2.80],
-     'Flavanoids': [3.06, 2.76, 3.24, 3.49, 2.69],
-     'Nonflavanoid_Phenols': [0.28, 0.26, 0.30, 0.24, 0.39],
-     'Proanthocyanins': [2.29, 1.28, 2.81, 2.18, 1.82],
-     'Color_Intensity': [5.64, 4.38, 5.68, 7.80, 4.32],
-     'Hue': [1.04, 1.05, 1.03, 0.86, 1.04],
-     'OD280': [3.92, 3.40, 3.17, 3.45, 2.93],
-     'Proline': [1065, 1050, 1185, 1400, 735],
- }
-
- # Membuat DataFrame dari data
- X = pd.DataFrame(data)
-
- # Mengisi nilai yang hilang dengan 0
- X.fillna(0, inplace=True)
-
- # Menghilangkan kolom 'Color_Intensity' sebelum melakukan clustering
- X_clustering = X.drop('Color_Intensity', axis=1)
-
- # Menentukan jumlah kluster
- n_clust = 5
-
- # Melakukan KMeans clustering
- kmeans = KMeans(n_clusters=n_clust).fit(X_clustering)
-
- # Menambahkan kolom label kluster ke DataFrame
- X['Labels'] = kmeans.labels_
-
- # Tampilkan DataFrame setelah penambahan label kluster
- print(X)
 ```
 ``` bash
 plt.figure(figsize=(6, 4))
@@ -342,6 +296,8 @@ plt.ylabel('Ash')
 # Menampilkan plot
 plt.show()
 ```
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/ff825760-e511-436e-b57f-4b5d6d205c6f)
+
 ``` bash
 plt.figure(figsize=(6, 4))
 
@@ -359,6 +315,8 @@ plt.ylabel('Magnesium')
 # Menampilkan plot
 plt.show()
 ```
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/3f6f0174-ddd0-4ef0-a340-ce45c7e40c05)
+
 ``` bash
 # Menghilangkan kolom 'Hue' dan 'Labels' sebelum melakukan klastering
 X1 = X1.drop(['Hue', 'Labels'], axis=1)
@@ -378,7 +336,12 @@ plt.title('Silhouette Scores for Different Numbers of Clusters')
 plt.xlabel('Number of Clusters')
 plt.ylabel('Silhouette Score')
 plt.show()
-## Visualisasi Hasil Algoritma
+```
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/acdb6d35-41e8-4b82-862b-d7af8526d490)
+
+## Evaluation
+Visualisasi Hasil Algoritma terdapat 8 cluster, cluster terkecil dengan score 0,53 dan cluster terbesar dengan score 0,66
+
 ``` bash
    for k in range(2, min(10, len(X1) - 1)):
     kmeans = KMeans(n_clusters=k, random_state=42)
@@ -409,37 +372,15 @@ plt.show()
     plt.yticks([])
     plt.show()
 ```
-``` bash
-for k in range(2, min(10, len(X1) - 1)):
-    kmeans = KMeans(n_clusters=k, random_state=42)
-    labels = kmeans.fit_predict(X1)
-    silhouette_avg = silhouette_score(X1, labels)
-    sample_silhouette_values = silhouette_samples(X1, labels)
-
-    plt.figure(figsize=(6, 4))
-    plt.title(f'KMeans Clustering dengan {k} Klaster\nSkor Siluet: {silhouette_avg:.2f}')
-
-    y_lower = 10
-    for i in range(k):
-        ith_cluster_silhouette_values = sample_silhouette_values[labels == i]
-        ith_cluster_silhouette_values.sort()
-
-        size_cluster_i = ith_cluster_silhouette_values.shape[0]
-        y_upper = y_lower + size_cluster_i
-
-        color = plt.cm.nipy_spectral(float(i) / k)
-        plt.fill_betweenx(np.arange(y_lower, y_upper), 0, ith_cluster_silhouette_values, facecolor=color, edgecolor=color, alpha=0.7)
-
-        plt.text(-0.05, y_lower + 0.5 * size_cluster_i, str(i))
-        y_lower = y_upper + 10
-
-    plt.xlabel("Nilai Koefisien Siluet")
-    plt.ylabel("Label Klaster")
-    plt.axvline(x=silhouette_avg, color="red", linestyle="--")
-    plt.yticks([])
-    plt.show()
-```
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/0dc7a7db-188c-401b-a925-96c0ab6401ef)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/4430601c-c26e-46f9-9231-258554453c25)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/e8b59cc2-c9de-4b7d-9a25-5c2b40943c16)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/eb1c7bbc-d6d5-4ca3-9312-8850a18862fb)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/ee766ca5-0810-4c87-8f9e-5c61e5fd574b)![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/49f78782-89c7-416c-abfe-9e1c67d36a39)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/6ab12750-af96-4274-b9a9-6721cc56befb)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/82326081-1bdf-4e9e-a7d2-d83e59c9863f)
 
 ## Deployment
 https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/new/main?filename=README.md
+
 https://wine-dataset-for-clustering-5ejuitrahek7ofsq4gdu4h.streamlit.app/
