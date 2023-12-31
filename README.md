@@ -171,7 +171,7 @@ plt.figure(figsize=(10, 6))
 sns.scatterplot(x=x, y=y, s=32, alpha=0.8, color='orange')
 
 # Menambahkan judul dan mengatur label sumbu
-plt.title('Scatter Plot of Ash & Ash_Alcanity')
+plt.title('Scatter Plot of Alcohol & Magnesium')
 plt.xlabel('Alcohol')
 plt.ylabel('Magnesium')
 
@@ -181,7 +181,8 @@ sns.despine(right=True, top=True)
 # Menampilkan plot
 plt.show()
 ```
-![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/b36e30f2-d5c1-45d3-a12c-9320dc55270a)
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/1e4d9b26-5aa7-4161-bc99-be963d6c5774)
+
 
 ``` bash
 sns.set(style="whitegrid")
