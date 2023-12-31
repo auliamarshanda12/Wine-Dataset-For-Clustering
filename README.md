@@ -383,6 +383,6 @@ Visualisasi Hasil Algoritma terdapat 8 cluster, cluster terkecil dengan score 0,
 ![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/82326081-1bdf-4e9e-a7d2-d83e59c9863f)
 
 ## Deployment
-https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/new/main?filename=README.md
+https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/tree/main?tab=readme-ov-file
 
 https://wine-dataset-for-clustering-5ejuitrahek7ofsq4gdu4h.streamlit.app/
