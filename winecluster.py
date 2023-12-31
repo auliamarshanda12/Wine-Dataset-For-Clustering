@@ -1,6 +1,5 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.cluster import KMeans
 from sklearn.datasets import make_blobs
 from sklearn.metrics import silhouette_score, silhouette_samples
