@@ -442,3 +442,4 @@ for k in range(2, min(10, len(X1) - 1)):
 
 ## Deployment
 https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/new/main?filename=README.md
+https://wine-dataset-for-clustering-5ejuitrahek7ofsq4gdu4h.streamlit.app/
