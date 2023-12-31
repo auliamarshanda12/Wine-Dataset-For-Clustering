@@ -234,6 +234,7 @@ ax.annotate('Possible elbow point',
 
 plt.show()
 ```
+![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/af5ae1c8-eb6e-4c47-8d1e-9be5960747f8)
 
 ## Modeling
 
