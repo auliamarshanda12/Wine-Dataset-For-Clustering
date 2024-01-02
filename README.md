@@ -342,7 +342,9 @@ plt.show()
 ![image](https://github.com/auliamarshanda12/Wine-Dataset-For-Clustering/assets/148952831/acdb6d35-41e8-4b82-862b-d7af8526d490)
 
 ## Evaluation
-Visualisasi Hasil Algoritma terdapat 8 cluster, cluster terkecil dengan score 0,53 dan cluster terbesar dengan score 0,66
+Disini saya menggunakan metode Silhouette Score.
+- Silhouette Score adalah metode evaluasi yang berguna untuk mengukur seberapa baik suatu objek berada di dalam klaster dibandingkan dengan klaster lainnya. Score berkisar antara -1 hingga 1, di mana nilai tinggi menunjukkan klaster yang lebih baik terpisah.
+- Visualisasi Hasil Algoritma terdapat 8 cluster, cluster terbesar dengan score 0,66 itu menunjukkan hasil klasterisasi yang baik sedangkan cluster terkecil dengan score 0,53 menunjukkan hasil yang buruk
 
 ``` bash
    for k in range(2, min(10, len(X1) - 1)):
